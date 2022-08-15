@@ -2,6 +2,7 @@ package com.yida;
 
 import com.yida.codec.ProtoStuffDecoder;
 import com.yida.handler.server.ServerInBoundHandler1;
+import com.yida.handler.server.ServerReadIdleHandler;
 import com.yida.handler.server.TcpStickHalfHandler1;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
@@ -53,6 +54,10 @@ public class NettyServer {
 							// 以特定字符进行分割
 							// ByteBuf buf = socketChannel.alloc().buffer().writeBytes("$$".getBytes(StandardCharsets.UTF_8));
 							// pipeline.addLast(new DelimiterBasedFrameDecoder(65536, buf));
+							
+							// 空闲心跳检测==>关闭服务端
+							// pipeline.addLast(new ServerReadIdleHandler());
+							
 							
 							// 以固定长度指定数据大小
 							pipeline.addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 4));

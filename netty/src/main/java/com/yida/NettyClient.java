@@ -1,6 +1,7 @@
 package com.yida;
 
 import com.yida.codec.ProtoStuffEncoder;
+import com.yida.handler.client.ClientWriterIdleHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
@@ -27,6 +28,10 @@ public class NettyClient {
 			@Override
 			protected void initChannel(SocketChannel socketChannel) throws Exception {
 				ChannelPipeline pipeline = socketChannel.pipeline();
+				
+				// 发送心跳消息
+				pipeline.addLast(new ClientWriterIdleHandler());
+				
 				// 编码
 				// 以固定长度指定数据大小
 				pipeline.addLast(new LengthFieldPrepender(4));
