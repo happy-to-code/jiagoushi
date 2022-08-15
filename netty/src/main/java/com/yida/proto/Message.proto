@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+option java_package = "com.yida.proto";
+option java_outer_classname = "MessageProto";
+message Message {
+  string id = 1;
+  string content = 2;
+}

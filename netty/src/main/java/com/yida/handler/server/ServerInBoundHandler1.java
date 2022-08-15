@@ -1,4 +1,4 @@
-package netty.handler.server;
+package com.yida.handler.server;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
@@ -33,6 +33,8 @@ public class ServerInBoundHandler1 extends ChannelInboundHandlerAdapter {
 	@Override
 	public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
 		// log.info("ServerInBoundHandler1 channelRead 从通道中年读到了数据,{}", ctx.channel().remoteAddress());
+		// log.info("==>",(String)msg.toString());
+		
 		// 将msg对象转换成ByteBuf
 		ByteBuf buf = (ByteBuf) msg;
 		byte[] bytes = new byte[buf.readableBytes()];

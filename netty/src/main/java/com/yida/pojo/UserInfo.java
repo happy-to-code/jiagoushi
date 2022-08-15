@@ -1,4 +1,4 @@
-package netty.pojo;
+package com.yida.pojo;
 
 import java.io.Serializable;
 

@@ -1,18 +1,21 @@
-package netty;
+package com.yida;
 
+import com.yida.codec.ProtoStuffDecoder;
+import com.yida.handler.server.ServerInBoundHandler1;
+import com.yida.handler.server.TcpStickHalfHandler1;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.protobuf.ProtobufDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.util.NettyRuntime;
 import io.netty.util.concurrent.DefaultThreadFactory;
 import io.netty.util.concurrent.EventExecutorGroup;
 import io.netty.util.concurrent.UnorderedThreadPoolEventExecutor;
-import netty.handler.server.ServerInBoundHandler1;
 
 public class NettyServer {
 	public static void main(String[] args) {
@@ -53,9 +56,11 @@ public class NettyServer {
 							
 							// 以固定长度指定数据大小
 							pipeline.addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 4));
-							
+							pipeline.addLast("protostuffdecoder",new ProtoStuffDecoder());
+							// pipeline.addLast(new ProtobufDecoder(MessageProto.Message.getDefaultInstance()));
 							// 读取客户端发送过来的数据
-							pipeline.addLast("ServerInBoundHandler1", new ServerInBoundHandler1());
+							// pipeline.addLast("ServerInBoundHandler1", new ServerInBoundHandler1());
+							pipeline.addLast("TcpStickHalfHandler1", new TcpStickHalfHandler1());
 						}
 					});
 			

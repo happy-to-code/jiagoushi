@@ -1,10 +1,10 @@
-package netty.handler.client;
+package com.yida.handler.client;
 
+import com.yida.pojo.UserInfo;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import lombok.extern.slf4j.Slf4j;
-import netty.pojo.UserInfo;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -21,15 +21,15 @@ public class ClientInboundHandler1 extends ChannelInboundHandlerAdapter {
 		for (int i = 0; i < 100; i++) {
 			userInfo = new UserInfo(i, "name" + i, i + 1, (i % 2 == 0) ? "男" : "女", "北京");
 			// ctx.writeAndFlush(ctx.alloc().buffer().writeBytes((userInfo.toString()+"\n").getBytes(StandardCharsets.UTF_8)));
-			ctx.writeAndFlush(ctx.alloc().buffer().writeBytes((userInfo.toString()).getBytes(StandardCharsets.UTF_8)));
-			// ctx.writeAndFlush(userInfo);
+			// ctx.writeAndFlush(ctx.alloc().buffer().writeBytes((userInfo.toString()).getBytes(StandardCharsets.UTF_8)));
+			ctx.writeAndFlush(userInfo);
 		}
-
-       /* MessageProto.Message message;
-        for (int i=0;i<100;i++) {
-            message= MessageProto.Message.newBuilder().setId("message" + i).setContent("hello protobuf").build();
-            ctx.writeAndFlush(message);
-        }*/
+		
+		/*MessageProto.Message message;
+		for (int i = 0; i < 100; i++) {
+			message = MessageProto.Message.newBuilder().setId("message" + i).setContent("hello protobuf").build();
+			ctx.writeAndFlush(message);
+		}*/
 		super.channelActive(ctx);
 	}
 	

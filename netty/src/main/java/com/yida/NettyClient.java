@@ -1,5 +1,6 @@
-package netty;
+package com.yida;
 
+import com.yida.codec.ProtoStuffEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.*;
@@ -7,7 +8,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldPrepender;
-import netty.handler.client.ClientInboundHandler1;
+import com.yida.handler.client.ClientInboundHandler1;
+import io.netty.handler.codec.protobuf.ProtobufEncoder;
 
 import java.nio.charset.StandardCharsets;
 
@@ -21,18 +23,18 @@ public class NettyClient {
 		EventLoopGroup group = new NioEventLoopGroup();
 		Bootstrap bootstrap = new Bootstrap();
 		
-		bootstrap.group(group)
-				.channel(NioSocketChannel.class)
-				.handler(new ChannelInitializer<SocketChannel>() {
-					@Override
-					protected void initChannel(SocketChannel socketChannel) throws Exception {
-						ChannelPipeline pipeline = socketChannel.pipeline();
-						
-						// 以固定长度指定数据大小
-						pipeline.addLast(new LengthFieldPrepender(4));
-						pipeline.addLast("ClientInboundHandler1", new ClientInboundHandler1());
-					}
-				});
+		bootstrap.group(group).channel(NioSocketChannel.class).handler(new ChannelInitializer<SocketChannel>() {
+			@Override
+			protected void initChannel(SocketChannel socketChannel) throws Exception {
+				ChannelPipeline pipeline = socketChannel.pipeline();
+				// 编码
+				// 以固定长度指定数据大小
+				pipeline.addLast(new LengthFieldPrepender(4));
+				pipeline.addLast(new ProtoStuffEncoder());
+				
+				pipeline.addLast("ClientInboundHandler1", new ClientInboundHandler1());
+			}
+		});
 		try {
 			ChannelFuture future = bootstrap.connect(host, port).sync();
 			
