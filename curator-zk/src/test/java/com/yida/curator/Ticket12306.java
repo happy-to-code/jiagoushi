@@ -24,7 +24,6 @@ public class Ticket12306 implements Runnable {
 		
 		//开启连接
 		client.start();
-		
 		lock = new InterProcessMutex(client, "/lock");
 	}
 	
