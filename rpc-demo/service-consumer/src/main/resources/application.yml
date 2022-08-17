@@ -10,7 +10,7 @@ rpc:
   client:
       zk:
         root: /rpc
-        addr: 192.168.200.129:2181
+        addr: 112.124.52.75:2181
         switch: true
         timeout: 10000
       api:
