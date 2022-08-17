@@ -1,5 +1,10 @@
 package com.itheima.rpc.server.boot.nett;
 
+import com.itheima.rpc.netty.codec.FrameDecoder;
+import com.itheima.rpc.netty.codec.FrameEncoder;
+import com.itheima.rpc.netty.codec.RpcRequestDecoder;
+import com.itheima.rpc.netty.codec.RpcResponseEncoder;
+import com.itheima.rpc.netty.handler.RpcRequestHandler;
 import com.itheima.rpc.server.boot.RpcServer;
 import com.itheima.rpc.server.config.RpcServerConfiguration;
 import io.netty.bootstrap.ServerBootstrap;
@@ -38,6 +43,8 @@ public class NettyServer implements RpcServer {
 		EventExecutorGroup business = new UnorderedThreadPoolEventExecutor((NettyRuntime.availableProcessors() * 2) + 1,
 				new DefaultThreadFactory("business"));
 		
+		// 处理请求的处理器(此处为了复用写在外面)
+		RpcRequestHandler requestHandler = new RpcRequestHandler();
 		try {
 			ServerBootstrap bootstrap = new ServerBootstrap();
 			bootstrap.group(boss, worker)
@@ -51,11 +58,25 @@ public class NettyServer implements RpcServer {
 						protected void initChannel(SocketChannel socketChannel) throws Exception {
 							ChannelPipeline pipeline = socketChannel.pipeline();
 							
-							//	编码
+							//	编码(outBound)
+							// 先进行二次编码  然后才是一次编码
+							pipeline.addLast("frameEncoder", new FrameEncoder());
+							pipeline.addLast("rpcResponseEncoder", new RpcResponseEncoder());
 							
+							
+							//=================================^=================================
+							//=================================|================================
+							//=================================|=================================
+							//=================================|================================
+							//=================================v================================
 							
 							//	解码
+							pipeline.addLast("frameDecoder", new FrameDecoder());
+							pipeline.addLast("rpcRequestDecoder", new RpcRequestDecoder());
 							
+							
+							//	真正处理任务的处理器
+							pipeline.addLast(business, "requestHandler", requestHandler);
 						}
 					});
 			
