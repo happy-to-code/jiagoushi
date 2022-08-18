@@ -255,7 +255,6 @@ public class fanshe {
 		// 3.调用show()方法
 		m.invoke(stuClass.getConstructor().newInstance());
 	}
-	
 	/**
 	 * 需求：
 	 *
