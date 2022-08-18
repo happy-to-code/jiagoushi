@@ -15,7 +15,7 @@ public class ServerZkClientConfig {
     private RpcServerConfiguration rpcServerConfiguration;
 
     /**
-     * 声音ZK客户端
+     * 声明ZK客户端
      * @return
      */
     @Bean
