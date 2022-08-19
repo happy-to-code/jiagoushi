@@ -12,6 +12,7 @@ public class RpcBootstrap {
 	
 	@PostConstruct
 	public void initRpcClient() {
+		System.out.println("--------------------initRpcClient-------------------------");
 		rpcClientRunner.run();
 	}
 	
