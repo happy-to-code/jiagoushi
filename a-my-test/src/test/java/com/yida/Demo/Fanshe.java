@@ -12,7 +12,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Properties;
 
-public class fanshe {
+public class Fanshe {
 	
 	/**
 	 * 获取对象的字节码
@@ -45,7 +45,7 @@ public class fanshe {
 	 * 创建实例：通过反射来生成对象
 	 * （1）使用Class对象的newInstance()方法来创建Class对象对应类的实例。
 	 * （2）先通过Class对象获取指定的Constructor对象，再调用Constructor对象的newInstance()方法来创建对象，
-	 * 这种方法可以用指定的构造器构造类的实例。
+	 *      这种方法可以用指定的构造器构造类的实例。
 	 */
 	@Test
 	public void createInstance() throws Exception {
@@ -113,7 +113,7 @@ public class fanshe {
 		// 1).Field[] getFields():获取所有的"公有字段"
 		Field[] publicFields = clazz.getFields();
 		for (Field publicField : publicFields) {
-			System.out.println("共有字段 = " + publicField);
+			System.out.println("公有字段 = " + publicField);
 		}
 		System.out.println("-----------------------------------------");
 		// 2).Field[] getDeclaredFields():获取所有字段，包括：私有、受保护、默认、公有；
@@ -202,7 +202,7 @@ public class fanshe {
 		Method show4 = clazz.getDeclaredMethod("show4", int.class); // show4是私有方法
 		System.out.println("show4 = " + show4);
 		show4.setAccessible(true);// 解除私有限定
-		Object result = show4.invoke(obj, 20);//需要两个参数，一个是要调用的对象（获取有反射），一个是实参
+		Object result = show4.invoke(obj, 20);//    需要两个参数，一个是要调用的对象（获取有反射），一个是实参
 		System.out.println("show4 返回值：" + result);
 	}
 	
