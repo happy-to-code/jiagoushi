@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RpcResponse {
-    private String requestId;
-    private Object result;
-    private Throwable cause;
-
-    public boolean isError() {
-        return cause != null;
-    }
+	private String requestId;
+	private Object result;
+	private Throwable cause;
+	
+	public boolean isError() {
+		return cause != null;
+	}
 }

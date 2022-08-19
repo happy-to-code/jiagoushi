@@ -7,6 +7,6 @@ package com.itheima.rpc.client.cluster;
  * @create:2021-05-13 11:51
  */
 public interface StartegyProvider {
-
-    LoadBalanceStrategy getStrategy();
+	
+	LoadBalanceStrategy getStrategy();
 }

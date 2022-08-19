@@ -61,7 +61,7 @@ public class NettyServer {
 							
 							// 以固定长度指定数据大小
 							pipeline.addLast(new LengthFieldBasedFrameDecoder(65536, 0, 4, 0, 4));
-							pipeline.addLast("protostuffdecoder",new ProtoStuffDecoder());
+							pipeline.addLast("protostuffdecoder", new ProtoStuffDecoder());
 							// pipeline.addLast(new ProtobufDecoder(MessageProto.Message.getDefaultInstance()));
 							// 读取客户端发送过来的数据
 							// pipeline.addLast("ServerInBoundHandler1", new ServerInBoundHandler1());

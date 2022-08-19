@@ -150,6 +150,7 @@ public class CuratorDemo {
 	 * 2. 删除带有子节点的节点:delete().deletingChildrenIfNeeded().forPath("/app1");
 	 * 3. 必须成功的删除:为了防止网络抖动。本质就是重试。  client.delete().guaranteed().forPath("/app2");
 	 * 4. 回调：inBackground
+	 *
 	 * @throws Exception
 	 */
 	
@@ -165,6 +166,7 @@ public class CuratorDemo {
 		//2. 删除带有子节点的节点
 		client.delete().deletingChildrenIfNeeded().forPath("/app4");
 	}
+	
 	@Test
 	public void testDelete3() throws Exception {
 		//3. 必须成功的删除
@@ -174,7 +176,7 @@ public class CuratorDemo {
 	@Test
 	public void testDelete4() throws Exception {
 		//4. 回调
-		client.delete().guaranteed().inBackground(new BackgroundCallback(){
+		client.delete().guaranteed().inBackground(new BackgroundCallback() {
 			@Override
 			public void processResult(CuratorFramework client, CuratorEvent event) throws Exception {
 				System.out.println("我被删除了~");

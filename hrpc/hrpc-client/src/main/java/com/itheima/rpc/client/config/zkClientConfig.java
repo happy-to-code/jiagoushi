@@ -8,15 +8,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class zkClientConfig {
-
-    private static final int EXPIRE_SECONDS = 86400;
-
-    @Autowired
-    private RpcClientConfiguration configuration;
-
-    @Bean
-    public ZkClient zkClient() {
-        return new ZkClient(configuration.getZkAddr(), configuration.getConnectTimeout());
-
-    }
+	
+	private static final int EXPIRE_SECONDS = 86400;
+	
+	@Autowired
+	private RpcClientConfiguration configuration;
+	
+	@Bean
+	public ZkClient zkClient() {
+		return new ZkClient(configuration.getZkAddr(), configuration.getConnectTimeout());
+		
+	}
 }

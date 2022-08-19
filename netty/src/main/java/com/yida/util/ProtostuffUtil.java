@@ -43,12 +43,13 @@ public class ProtostuffUtil {
 	
 	/**
 	 * 将对象序列化为字节数组
+	 *
 	 * @param t
 	 * @param useWrapper 为true完全使用包装模式 为false则选择性的使用包装模式
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> byte[] serialize(T t,boolean useWrapper) {
+	public static <T> byte[] serialize(T t, boolean useWrapper) {
 		Object serializerObj = t;
 		if (useWrapper) {
 			serializerObj = SerializeDeserializeWrapper.build(t);
@@ -58,6 +59,7 @@ public class ProtostuffUtil {
 	
 	/**
 	 * 将对象序列化为字节数组
+	 *
 	 * @param t
 	 * @param <T>
 	 * @return
@@ -75,6 +77,7 @@ public class ProtostuffUtil {
 	
 	/**
 	 * 执行序列化
+	 *
 	 * @param t
 	 * @param <T>
 	 * @return
@@ -96,9 +99,9 @@ public class ProtostuffUtil {
 		byte[] protostuff = null;
 		try {
 			protostuff = ProtostuffIOUtil.toByteArray(t, schema, buffer);
-		} catch (Exception e){
-			log.error("protostuff serialize error,{}",e.getMessage());
-		}finally {
+		} catch (Exception e) {
+			log.error("protostuff serialize error,{}", e.getMessage());
+		} finally {
 			buffer.clear();
 		}
 		return protostuff;
@@ -107,21 +110,22 @@ public class ProtostuffUtil {
 	
 	/**
 	 * 反序列化
+	 *
 	 * @param data
 	 * @param clazz
 	 * @param <T>
 	 * @return
 	 */
-	public static <T> T deserialize(byte[] data,Class<T> clazz) {
+	public static <T> T deserialize(byte[] data, Class<T> clazz) {
 		//判断是否经过包装
 		if (WRAPPER_SET.contains(clazz)) {
 			SerializeDeserializeWrapper<T> wrapper = new SerializeDeserializeWrapper<T>();
-			ProtostuffIOUtil.mergeFrom(data,wrapper,RuntimeSchema.getSchema(SerializeDeserializeWrapper.class));
+			ProtostuffIOUtil.mergeFrom(data, wrapper, RuntimeSchema.getSchema(SerializeDeserializeWrapper.class));
 			return wrapper.getData();
-		}else {
+		} else {
 			Schema<T> schema = RuntimeSchema.getSchema(clazz);
 			T newMessage = schema.newMessage();
-			ProtostuffIOUtil.mergeFrom(data,newMessage,schema);
+			ProtostuffIOUtil.mergeFrom(data, newMessage, schema);
 			return newMessage;
 		}
 	}
@@ -131,7 +135,7 @@ public class ProtostuffUtil {
 		//被包装的数据
 		T data;
 		
-		public static <T> SerializeDeserializeWrapper<T> build(T data){
+		public static <T> SerializeDeserializeWrapper<T> build(T data) {
 			SerializeDeserializeWrapper<T> wrapper = new SerializeDeserializeWrapper<T>();
 			wrapper.setData(data);
 			return wrapper;

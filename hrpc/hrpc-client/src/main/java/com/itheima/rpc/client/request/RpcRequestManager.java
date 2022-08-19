@@ -1,6 +1,8 @@
 package com.itheima.rpc.client.request;
 
 import com.itheima.rpc.cache.ServiceProviderCache;
+import com.itheima.rpc.client.cluster.LoadBalanceStrategy;
+import com.itheima.rpc.client.cluster.StartegyProvider;
 import com.itheima.rpc.data.RpcRequest;
 import com.itheima.rpc.data.RpcResponse;
 import com.itheima.rpc.enums.StatusEnum;
@@ -33,6 +35,9 @@ public class RpcRequestManager {
 	@Autowired
 	private ServiceProviderCache serviceProviderCache;  // 缓存服务
 	
+	@Autowired
+	private StartegyProvider startegyProvider;
+	
 	
 	/**
 	 * 向服务端发送请求并获取响应
@@ -50,7 +55,10 @@ public class RpcRequestManager {
 			throw new RpcException(StatusEnum.NOT_FOUND_SERVICE_PROVINDER);
 		}
 		// 获取服务端的一个节点
-		ServiceProvider serviceProvider = serviceProviders.get(0);
+		// ServiceProvider serviceProvider = serviceProviders.get(0);
+		
+		LoadBalanceStrategy loadBalanceStrategy = startegyProvider.getStrategy();
+		ServiceProvider serviceProvider = loadBalanceStrategy.select(serviceProviders);
 		if (serviceProvider == null) {
 			throw new RuntimeException("没有发现服务端停供的服务");
 		}
