@@ -1,4 +1,4 @@
-package com.yida.Demo;
+package com.yida;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;

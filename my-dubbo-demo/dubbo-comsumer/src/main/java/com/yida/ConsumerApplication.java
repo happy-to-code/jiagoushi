@@ -13,19 +13,19 @@ import org.springframework.stereotype.Service;
 @Service
 @EnableDubbo
 public class ConsumerApplication {
-
-    @DubboReference
-    private HelloService helloService;
-
-    public static void main(String[] args) {
-
-        ConfigurableApplicationContext context = SpringApplication.run(ConsumerApplication.class, args);
-        ConsumerApplication application = context.getBean(ConsumerApplication.class);
-        String result = application.doSayHello("小花");
-        System.out.println("result: " + result);
-    }
-
-    public String doSayHello(String name) {
-        return helloService.sayHello(name);
-    }
+	
+	@DubboReference
+	private HelloService helloService;
+	
+	public static void main(String[] args) {
+		
+		ConfigurableApplicationContext context = SpringApplication.run(ConsumerApplication.class, args);
+		ConsumerApplication application = context.getBean(ConsumerApplication.class);
+		String result = application.doSayHello("小花");
+		System.out.println("result: " + result);
+	}
+	
+	public String doSayHello(String name) {
+		return helloService.sayHello(name);
+	}
 }

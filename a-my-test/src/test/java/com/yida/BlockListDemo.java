@@ -1,4 +1,4 @@
-package com.yida.Demo;
+package com.yida;
 
 import org.junit.Test;
 

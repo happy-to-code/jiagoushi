@@ -208,7 +208,7 @@ pls. switch to use 'curator' instead.
 - obtain local address incorrectly sometimes in dubbo [#538](https://github.com/apache/dubbo/issues/538)
 - implement pull request #3412 on master branch [#3418](https://github.com/apache/dubbo/pull/3418)
 - enhancement for event of response (follow up for pull request
-  #3043) [#3244](https://github.com/apache/dubbo/issues/3244)
+  # 3043) [#3244](https://github.com/apache/dubbo/issues/3244)
 - bump up hessian-lite version #3423 [#3513](https://github.com/apache/dubbo/pull/3513)
 - [Dubbo-3610]make snakeyaml transitive, should we do this? [#3659](https://github.com/apache/dubbo/pull/3659)
 
@@ -326,7 +326,7 @@ for notes and possible compatibility issues for upgrading from 2.6.x or lower to
 - Fixed the serialization problem of JDK primitive types in Kryo #2178.
 
 - Fixed the problem of failing to notify Consumer as early as possible after the Provider side deserialization failed
-  #1903.
+  # 1903.
 
 ### Upgrading and Compatibility Notifications
 

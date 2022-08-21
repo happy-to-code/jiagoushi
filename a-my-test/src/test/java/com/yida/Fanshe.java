@@ -1,4 +1,4 @@
-package com.yida.Demo;
+package com.yida;
 
 import com.yida.pojo.Student;
 import org.junit.Test;
@@ -45,7 +45,7 @@ public class Fanshe {
 	 * 创建实例：通过反射来生成对象
 	 * （1）使用Class对象的newInstance()方法来创建Class对象对应类的实例。
 	 * （2）先通过Class对象获取指定的Constructor对象，再调用Constructor对象的newInstance()方法来创建对象，
-	 *      这种方法可以用指定的构造器构造类的实例。
+	 * 这种方法可以用指定的构造器构造类的实例。
 	 */
 	@Test
 	public void createInstance() throws Exception {

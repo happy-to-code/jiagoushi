@@ -55,7 +55,7 @@ the following additional restricts:
   project).
 
 * When writing a commit message please follow these conventions, if you are fixing an existing issue please add Fixes
-  #XXX at the end of the commit message (where XXX is the issue number).
+  # XXX at the end of the commit message (where XXX is the issue number).
 
 ### Contribution flow
 

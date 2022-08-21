@@ -1,4 +1,4 @@
-package com.yida.Demo;
+package com.yida;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.SynchronousQueue;

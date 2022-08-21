@@ -1,9 +1,9 @@
 package com.yida.pojo.annotation;
 
 @MyAnnotation(
-		name="Jakob",
-		age=37,
-		newNames={"Jenkov", "Peterson"}
+		name = "Jakob",
+		age = 37,
+		newNames = {"Jenkov", "Peterson"}
 )
 public class MyClassDemo {
 	public static void main(String[] args) {

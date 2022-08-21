@@ -252,7 +252,9 @@ public class UserService {
 		
 		public int id; // required
 		
-		/** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+		/**
+		 * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+		 */
 		public enum _Fields implements org.apache.thrift.TFieldIdEnum {
 			ID((short) 1, "id");
 			
@@ -365,7 +367,9 @@ public class UserService {
 			__isset_bitfield = org.apache.thrift.EncodingUtils.clearBit(__isset_bitfield, __ID_ISSET_ID);
 		}
 		
-		/** Returns true if field id is set (has been assigned a value) and false otherwise */
+		/**
+		 * Returns true if field id is set (has been assigned a value) and false otherwise
+		 */
 		public boolean isSetId() {
 			return org.apache.thrift.EncodingUtils.testBit(__isset_bitfield, __ID_ISSET_ID);
 		}
@@ -396,7 +400,9 @@ public class UserService {
 			throw new IllegalStateException();
 		}
 		
-		/** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+		/**
+		 * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+		 */
 		public boolean isSet(_Fields field) {
 			if (field == null) {
 				throw new IllegalArgumentException();
@@ -603,7 +609,9 @@ public class UserService {
 		
 		public String success; // required
 		
-		/** The set of fields this struct contains, along with convenience methods for finding and manipulating them. */
+		/**
+		 * The set of fields this struct contains, along with convenience methods for finding and manipulating them.
+		 */
 		public enum _Fields implements org.apache.thrift.TFieldIdEnum {
 			SUCCESS((short) 0, "success");
 			
@@ -712,7 +720,9 @@ public class UserService {
 			this.success = null;
 		}
 		
-		/** Returns true if field success is set (has been assigned a value) and false otherwise */
+		/**
+		 * Returns true if field success is set (has been assigned a value) and false otherwise
+		 */
 		public boolean isSetSuccess() {
 			return this.success != null;
 		}
@@ -745,7 +755,9 @@ public class UserService {
 			throw new IllegalStateException();
 		}
 		
-		/** Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise */
+		/**
+		 * Returns true if field corresponding to fieldID is set (has been assigned a value) and false otherwise
+		 */
 		public boolean isSet(_Fields field) {
 			if (field == null) {
 				throw new IllegalArgumentException();
