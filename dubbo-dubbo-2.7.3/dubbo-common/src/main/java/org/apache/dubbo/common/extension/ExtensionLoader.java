@@ -717,10 +717,12 @@ public class ExtensionLoader<T> {
 	 * extract and cache default extension name if exists
 	 */
 	private void cacheDefaultExtensionName() {
+		// 获取 SPI 注解，这里的 type 变量是在调用 getExtensionLoader 方法时传入的
 		final SPI defaultAnnotation = type.getAnnotation(SPI.class);
 		if (defaultAnnotation != null) {
 			String value = defaultAnnotation.value();
 			if ((value = value.trim()).length() > 0) {
+				// 对 SPI 注解内容进行切分
 				String[] names = NAME_SEPARATOR.split(value);
 				if (names.length > 1) {
 					throw new IllegalStateException("More than 1 default extension name on extension " + type.getName() + ": " + Arrays.toString(names));
@@ -734,10 +736,13 @@ public class ExtensionLoader<T> {
 	
 	private void loadDirectory(Map<String, Class<?>> extensionClasses, String dir, String type) {
 		// dir 有三种目录  type是接口类型
+		// fileName = 文件夹路径 + type全限定名
+		// bumblebee=com.itheima.spi.dubbo.robot.Bumblebee
 		String fileName = dir + type;
 		try {
 			Enumeration<java.net.URL> urls;
 			ClassLoader classLoader = findClassLoader();
+			// 根据文件名加载所有的同名文件
 			if (classLoader != null) {
 				urls = classLoader.getResources(fileName);
 			} else {
@@ -746,7 +751,7 @@ public class ExtensionLoader<T> {
 			if (urls != null) {
 				while (urls.hasMoreElements()) {
 					java.net.URL resourceURL = urls.nextElement();
-					// 核心方法
+					// 核心方法  加载资源
 					loadResource(extensionClasses, classLoader, resourceURL);
 				}
 			}
@@ -761,8 +766,10 @@ public class ExtensionLoader<T> {
 				String line;
 				// 按行读取配置
 				while ((line = reader.readLine()) != null) {
-					final int ci = line.indexOf('#');
+					final int ci = line.indexOf('#'); // # 是注释符
 					if (ci >= 0) {
+						// 截取 bumblebee=com.itheima.spi.dubbo.robot.Bumblebee # 这是注释
+						//  主要是处理#在最后面的逻辑
 						line = line.substring(0, ci);
 					}
 					line = line.trim();
@@ -776,6 +783,7 @@ public class ExtensionLoader<T> {
 								line = line.substring(i + 1).trim(); // value 即扩展点类的全路径
 							}
 							if (line.length() > 0) {
+								// 加载类，并通过 loadClass 方法对类进行缓存
 								loadClass(extensionClasses, resourceURL, Class.forName(line, true, classLoader), name);
 							}
 						} catch (Throwable t) {
@@ -790,6 +798,16 @@ public class ExtensionLoader<T> {
 		}
 	}
 	
+	/**
+	 * loadResource 方法用于读取和解析配置文件，并通过反射加载类，最后调用 loadClass 方法进行其他操作。
+	 * loadClass 方法用于主要用于操作缓存，该方法的逻辑如下：
+	 *
+	 * @param extensionClasses
+	 * @param resourceURL
+	 * @param clazz
+	 * @param name
+	 * @throws NoSuchMethodException
+	 */
 	private void loadClass(Map<String, Class<?>> extensionClasses, java.net.URL resourceURL, Class<?> clazz, String name) throws NoSuchMethodException {
 		if (!type.isAssignableFrom(clazz)) {
 			throw new IllegalStateException("Error occurred when loading extension class (interface: " + type + ", class line: " + clazz.getName() + "), class " + clazz.getName() + " is not subtype of interface.");
@@ -849,6 +867,8 @@ public class ExtensionLoader<T> {
 	private void cacheActivateClass(Class<?> clazz, String name) {
 		Activate activate = clazz.getAnnotation(Activate.class);
 		if (activate != null) {
+			// 如果类上有 Activate 注解，则使用 names 数组的第一个元素作为键，
+			// 存储 name 到 Activate 注解对象的映射关系
 			cachedActivates.put(name, activate);
 		} else {
 			// support com.alibaba.dubbo.common.extension.Activate

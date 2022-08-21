@@ -1,0 +1,16 @@
+server:
+  port: 8334
+
+dubbo:
+  application:
+    name: dubbo-springboot-demo-comsumer
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    id: zk-registry
+    address: zookeeper://112.124.52.75:2181
+#  config-center:
+#    address: zookeeper://112.124.52.75:2181
+#  metadata-report:
+#    address: zookeeper://112.124.52.75:2181
