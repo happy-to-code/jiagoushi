@@ -10,7 +10,7 @@ public class ApplicationContextUtil implements ApplicationContextAware {
 	
 	private static ApplicationContext applicationContext;
 	
-	/**
+	/**m
 	 * 实现ApplicationContextAware接口的回调方法，设置上下文环境
 	 *
 	 * @param applicationContext spring上下文对象
