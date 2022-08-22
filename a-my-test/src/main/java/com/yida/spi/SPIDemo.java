@@ -1,4 +1,4 @@
-package com.yida.pojo.spi;
+package com.yida.spi;
 
 import java.util.ServiceLoader;
 

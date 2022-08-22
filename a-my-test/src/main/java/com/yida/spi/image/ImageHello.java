@@ -1,6 +1,6 @@
-package com.yida.pojo.spi.image;
+package com.yida.spi.image;
 
-import com.yida.pojo.spi.HelloSPI;
+import com.yida.spi.HelloSPI;
 
 public class ImageHello implements HelloSPI {
 	@Override

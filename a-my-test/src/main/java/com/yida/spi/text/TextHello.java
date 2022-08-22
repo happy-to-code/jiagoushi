@@ -1,6 +1,6 @@
-package com.yida.pojo.spi.text;
+package com.yida.spi.text;
 
-import com.yida.pojo.spi.HelloSPI;
+import com.yida.spi.HelloSPI;
 
 public class TextHello implements HelloSPI {
 	@Override
