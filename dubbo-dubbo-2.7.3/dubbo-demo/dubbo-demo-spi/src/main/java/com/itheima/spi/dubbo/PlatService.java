@@ -1,6 +1,5 @@
 package com.itheima.spi.dubbo;
 
-import org.apache.dubbo.common.extension.DisableInject;
 import org.apache.dubbo.common.extension.SPI;
 
 @SPI("windows")
