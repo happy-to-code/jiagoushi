@@ -1,16 +1,19 @@
 server:
-  port: 8334
+  port: 18084
+
+
+spring:
+  application:
+    name: dubbo-spring-consumer
 
 dubbo:
-  application:
-    name: dubbo-springboot-demo-comsumer
-  protocol:
-    name: dubbo
-    port: -1
+  spring:
+    provider:
+      version: 1.0.0
   registry:
-    id: zk-registry
     address: zookeeper://112.124.52.75:2181
-#  config-center:
-#    address: zookeeper://112.124.52.75:2181
-#  metadata-report:
-#    address: zookeeper://112.124.52.75:2181
+    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+  metadata-report:
+    timeout: 30000
+  config-center:
+    timeout: 30000

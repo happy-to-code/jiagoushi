@@ -55,7 +55,7 @@ public class CuratorDemo {
 	public void testCreate() throws Exception {
 		//2. 创建节点 带有数据
 		//如果创建节点，没有指定数据，则默认将当前客户端的ip作为数据存储
-		String path = client.create().forPath("/app1", "hello".getBytes(StandardCharsets.UTF_8));
+		String path = client.create().forPath("/app8", "hello".getBytes(StandardCharsets.UTF_8));
 		System.out.println("path = " + path);
 	}
 	

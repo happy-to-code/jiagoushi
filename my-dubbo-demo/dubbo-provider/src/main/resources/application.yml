@@ -1,16 +1,23 @@
 server:
-  port: 8333
+  port: 18081
 
-dubbo:
+spring:
   application:
     name: dubbo-springboot-demo-provider
+
+dubbo:
+  scan:
+    base-packages: com.yida
   protocol:
-    name: dubbo
-    port: -1
+    name: dubbo  # Dubbo 通讯协议
+    port: -1  # Dubbo服务提供的端口， 配置为-1，代表为随机端口 默认20880
   registry:
-    id: zk-registry
     address: zookeeper://112.124.52.75:2181
-  config-center:
-    address: zookeeper://112.124.52.75:2181
+    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
   metadata-report:
-    address: zookeeper://112.124.52.75:2181
+    timeout: 30000
+  config-center:
+    timeout: 30000
+  spring:
+    provider:
+      version: 1.0.0
