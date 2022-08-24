@@ -19,7 +19,13 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public String getOrder(Long orderId) {
-		String result = "get order detail ,orderId=" + orderId + ",serverPort=" + serverPort + ",serviceVersion=" + serviceVersion + "\t" + UUID.randomUUID().toString();
+		// try {
+		// 	Thread.sleep(1500);
+		// } catch (InterruptedException e) {
+		// 	e.printStackTrace();
+		// }
+		// System.out.println(1/0);
+		String result = "get order detail ,orderId=" + orderId + ",serverPort=" + serverPort + ",serviceVersion=" + serviceVersion + "\t" + UUID.randomUUID();
 		System.out.println(result);
 		return result;
 	}
