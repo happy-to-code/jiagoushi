@@ -2,8 +2,8 @@
 <configuration>
 
     <!-- 要使用springProperty属性，logback配置文件需要命名为logback-spring.xml -->
-    <springProperty scope="local" name="LOG_LEVEL" source="logback.level" defaultValue="INFO" />
-    <springProperty scope="local" name="LOG_PATH" source="logback.path" defaultValue="/data/log/zns" />
+    <springProperty scope="local" name="LOG_LEVEL" source="logback.level" defaultValue="INFO"/>
+    <springProperty scope="local" name="LOG_PATH" source="logback.path" defaultValue="/data/log/zns"/>
     <contextName>rpc-server</contextName>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author: ts
  * @create:2021-05-10 11:34
  */
-@SpringBootApplication(scanBasePackages = {"com.itheima.shop","com.itheima.rpc"})
+@SpringBootApplication(scanBasePackages = {"com.itheima.shop", "com.itheima.rpc"})
 // @ComponentScan({"com.itheima.shop","com.itheima.rpc"})
 public class ShopApplicaiton {
-
-    public static void main(String[] args) {
-        SpringApplication.run(ShopApplicaiton.class,args);
-    }
+	
+	public static void main(String[] args) {
+		SpringApplication.run(ShopApplicaiton.class, args);
+	}
 }

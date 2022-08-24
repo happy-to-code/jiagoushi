@@ -10,6 +10,6 @@ import java.util.List;
  * @create:2021-05-11 18:19
  */
 public interface ServiceRoute {
-
-    List<ServiceProvider> route(List<ServiceProvider> serviceProviderList);
+	
+	List<ServiceProvider> route(List<ServiceProvider> serviceProviderList);
 }

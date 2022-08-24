@@ -8,9 +8,9 @@ import io.netty.util.concurrent.EventExecutor;
  * @author: ts
  * @create:2021-05-11 23:24
  */
-public class RequestPromise  extends DefaultPromise {
-
-    public RequestPromise(EventExecutor executor) {
-        super(executor);
-    }
+public class RequestPromise extends DefaultPromise {
+	
+	public RequestPromise(EventExecutor executor) {
+		super(executor);
+	}
 }

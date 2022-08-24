@@ -29,7 +29,8 @@ public class ZKServiceDiscovery implements RpcServiceDiscovery {
 				
 				//	存入缓存
 				providerCache.put(serviceName, serviceInfos);
-				
+				System.out.println("1----->serviceName = " + serviceName);
+				System.out.println("2----->serviceInfos = " + serviceInfos);
 				//	监听该服务下所有节点是否有信息变化
 				clientZKit.subscribeZKEvent(serviceName);
 				

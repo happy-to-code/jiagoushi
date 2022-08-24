@@ -7,19 +7,20 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ServerZkClientConfig {
-
-    /**
-     * RPC服务端配置
-     */
-    @Autowired
-    private RpcServerConfiguration rpcServerConfiguration;
-
-    /**
-     * 声明ZK客户端
-     * @return
-     */
-    @Bean
-    public ZkClient zkClient() {
-        return new ZkClient(rpcServerConfiguration.getZkAddr(), rpcServerConfiguration.getConnectTimeout());
-    }
+	
+	/**
+	 * RPC服务端配置
+	 */
+	@Autowired
+	private RpcServerConfiguration rpcServerConfiguration;
+	
+	/**
+	 * 声明ZK客户端
+	 *
+	 * @return
+	 */
+	@Bean
+	public ZkClient zkClient() {
+		return new ZkClient(rpcServerConfiguration.getZkAddr(), rpcServerConfiguration.getConnectTimeout());
+	}
 }

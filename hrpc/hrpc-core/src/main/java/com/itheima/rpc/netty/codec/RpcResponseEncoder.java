@@ -25,7 +25,7 @@ public class RpcResponseEncoder extends MessageToMessageEncoder<RpcResponse> {
 			
 			out.add(buf);
 		} catch (Exception e) {
-			log.error("RpcResponseEncoder encode error,msg={}",e.getMessage());
+			log.error("RpcResponseEncoder encode error,msg={}", e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}

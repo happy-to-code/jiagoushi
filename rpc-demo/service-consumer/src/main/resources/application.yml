@@ -8,12 +8,12 @@ spring:
 
 rpc:
   client:
-      zk:
-        root: /rpc
-        addr: 112.124.52.75:2181
-        switch: true
-        timeout: 10000
-      api:
-        package: com.itcast.rpc.api
+    zk:
+      root: /rpc
+      addr: 112.124.52.75:2181
+      switch: true
+      timeout: 10000
+    api:
+      package: com.itcast.rpc.api
   cluster:
-        strategy: random
+    strategy: random

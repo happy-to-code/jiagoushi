@@ -14,20 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-
-
-    @HrpcRemote
-    private OrderService orderService;
-
-    /**
-     * 获取订单信息
-     * @param userId
-     * @param orderNo
-     * @return
-     */
-    @GetMapping("/getOrder")
-    public String getOrder(String userId,String orderNo) {
-        return orderService.getOrder(userId,orderNo);
-    }
-
+	
+	
+	@HrpcRemote
+	private OrderService orderService;
+	
+	/**
+	 * 获取订单信息
+	 *
+	 * @param userId
+	 * @param orderNo
+	 * @return
+	 */
+	@GetMapping("/getOrder")
+	public String getOrder(String userId, String orderNo) {
+		return orderService.getOrder(userId, orderNo);
+	}
+	
 }

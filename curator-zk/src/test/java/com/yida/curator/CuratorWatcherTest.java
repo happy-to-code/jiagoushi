@@ -74,7 +74,7 @@ public class CuratorWatcherTest {
 	@Test
 	public void testPathChildrenCache() throws Exception {
 		//1.创建监听对象
-		PathChildrenCache pathChildrenCache = new PathChildrenCache(client,"/app2",true);
+		PathChildrenCache pathChildrenCache = new PathChildrenCache(client, "/app2", true);
 		
 		//2. 绑定监听器
 		pathChildrenCache.getListenable().addListener(new PathChildrenCacheListener() {
@@ -86,7 +86,7 @@ public class CuratorWatcherTest {
 				//1.获取类型
 				PathChildrenCacheEvent.Type type = event.getType();
 				//2.判断类型是否是update
-				if(type.equals(PathChildrenCacheEvent.Type.CHILD_UPDATED)){
+				if (type.equals(PathChildrenCacheEvent.Type.CHILD_UPDATED)) {
 					System.out.println("数据变了！！！");
 					byte[] data = event.getData().getData();
 					System.out.println(new String(data));
@@ -97,7 +97,7 @@ public class CuratorWatcherTest {
 		//3. 开启
 		pathChildrenCache.start();
 		
-		while (true){
+		while (true) {
 		
 		}
 	}
@@ -108,7 +108,7 @@ public class CuratorWatcherTest {
 	@Test
 	public void testTreeCache() throws Exception {
 		//1. 创建监听器
-		TreeCache treeCache = new TreeCache(client,"/app2");
+		TreeCache treeCache = new TreeCache(client, "/app2");
 		
 		//2. 注册监听
 		treeCache.getListenable().addListener(new TreeCacheListener() {
@@ -122,7 +122,7 @@ public class CuratorWatcherTest {
 		//3. 开启
 		treeCache.start();
 		
-		while (true){
+		while (true) {
 		
 		}
 	}

@@ -11,16 +11,16 @@ import java.util.List;
 
 @Configuration
 public class BeanConfig {
-
-    @Bean
-    public LoadingCache<String, List<ServiceProvider>> buildCache() {
-        return CacheBuilder.newBuilder()
-                .build(new CacheLoader<String, List<ServiceProvider>>() {
-                    @Override
-                    public List<ServiceProvider> load(String key) throws Exception {
-                        //在这里可以初始化加载数据的缓存信息，读取数据库中信息或者是加载文件中的某些数据信息
-                        return null;
-                    }
-                });
-    }
+	
+	@Bean
+	public LoadingCache<String, List<ServiceProvider>> buildCache() {
+		return CacheBuilder.newBuilder()
+				.build(new CacheLoader<String, List<ServiceProvider>>() {
+					@Override
+					public List<ServiceProvider> load(String key) throws Exception {
+						//在这里可以初始化加载数据的缓存信息，读取数据库中信息或者是加载文件中的某些数据信息
+						return null;
+					}
+				});
+	}
 }

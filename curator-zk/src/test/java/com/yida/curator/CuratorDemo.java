@@ -55,7 +55,7 @@ public class CuratorDemo {
 	public void testCreate() throws Exception {
 		//2. 创建节点 带有数据
 		//如果创建节点，没有指定数据，则默认将当前客户端的ip作为数据存储
-		String path = client.create().forPath("/app1", "hello".getBytes(StandardCharsets.UTF_8));
+		String path = client.create().forPath("/app8", "hello".getBytes(StandardCharsets.UTF_8));
 		System.out.println("path = " + path);
 	}
 	
@@ -150,6 +150,7 @@ public class CuratorDemo {
 	 * 2. 删除带有子节点的节点:delete().deletingChildrenIfNeeded().forPath("/app1");
 	 * 3. 必须成功的删除:为了防止网络抖动。本质就是重试。  client.delete().guaranteed().forPath("/app2");
 	 * 4. 回调：inBackground
+	 *
 	 * @throws Exception
 	 */
 	
@@ -165,6 +166,7 @@ public class CuratorDemo {
 		//2. 删除带有子节点的节点
 		client.delete().deletingChildrenIfNeeded().forPath("/app4");
 	}
+	
 	@Test
 	public void testDelete3() throws Exception {
 		//3. 必须成功的删除
@@ -174,7 +176,7 @@ public class CuratorDemo {
 	@Test
 	public void testDelete4() throws Exception {
 		//4. 回调
-		client.delete().guaranteed().inBackground(new BackgroundCallback(){
+		client.delete().guaranteed().inBackground(new BackgroundCallback() {
 			@Override
 			public void processResult(CuratorFramework client, CuratorEvent event) throws Exception {
 				System.out.println("我被删除了~");

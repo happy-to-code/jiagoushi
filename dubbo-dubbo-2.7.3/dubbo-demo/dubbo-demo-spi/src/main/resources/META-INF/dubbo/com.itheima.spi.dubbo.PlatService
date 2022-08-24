@@ -1,0 +1,3 @@
+adaptivePlat=com.itheima.spi.dubbo.plat.AdaptivePlatService
+windows=com.itheima.spi.dubbo.plat.WindowsPlatService
+linux=com.itheima.spi.dubbo.plat.LinuxPlatService

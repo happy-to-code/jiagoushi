@@ -1,0 +1,3 @@
+ali=com.yida.dspi.impl.AliPay
+wechat=com.yida.dspi.impl.WechatPay
+wrapper=com.yida.dspi.impl.PayWrapper
