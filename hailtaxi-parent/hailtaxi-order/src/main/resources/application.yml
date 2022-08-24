@@ -1,0 +1,61 @@
+server:
+  port: 18082
+spring:
+  application:
+    name: hailtaxi-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://112.124.52.75:3306/hailtaxi-order?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: root
+  cloud:
+    #Consul配置
+    consul:
+      host: 112.124.52.75
+      port: 8500
+      discovery:
+        #注册到Consul中的服务名字
+        service-name: ${spring.application.name}
+        #注册的服务的实例 Id，最好不要重复，这里参考官网建议的方式 带随机数
+        #instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.i nstance_id:${random.value}}}
+        # 自定义实例id为:应用名:ip:port
+        instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
+        prefer-ip-address: true
+        # 开启服务注册
+        register: true
+        # 开启服务发现
+        enabled: true
+        #2 分钟之后健康检查未通过取消注册
+        health-check-critical-timeout: 2m
+        #consul 健康检查的轮询周期
+        health-check-interval: 10s
+
+
+# com.itheima 包下的日志级别都为Debug
+logging:
+  level:
+    com.itheima: debug
+
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      #全局默认配置
+      default:
+        #网络连接阶段1秒超时 单位毫秒
+        connectTimeout: 1000
+        #服务请求响应阶段5秒超时
+        readTimeout: 5000
+      #针对某个特定服务的超时配置
+      hailtaxi-driver:
+        connectTimeout: 1000
+        readTimeout: 2000
+  compression:
+    request:
+      enabled: true # 开启请求压缩
+      mime-types: text/html,application/xml,application/json # 设置压缩的数据类型
+      min-request-size: 2048 # 设置触发压缩的大小下限
+      #以上数据类型，压缩大小下限均为默认值
+    response:
+      enabled: true # 开启响应压缩
