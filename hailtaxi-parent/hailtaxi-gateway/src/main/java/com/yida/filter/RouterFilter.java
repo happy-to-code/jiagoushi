@@ -25,6 +25,7 @@ public class RouterFilter implements GlobalFilter, Ordered {
 		log.info("---------RouterFilter----------------");
 		//获取请求参数
 		String token = exchange.getRequest().getQueryParams().getFirst("token");
+		System.out.println("token = " + token);
 		//如果token为空，则表示没有登录
 		if (StringUtils.isEmpty(token)) {
 			//没登录,状态设置413

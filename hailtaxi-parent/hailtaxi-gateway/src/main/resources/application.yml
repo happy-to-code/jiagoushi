@@ -8,7 +8,7 @@ spring:
   cloud:
     #Consul配置
     consul:
-      host: 112.124.52.75
+      host: 127.0.0.1
       port: 8500
       discovery:
         #注册到Consul中的服务名字
@@ -33,12 +33,12 @@ spring:
           uri: lb://hailtaxi-driver
           predicates:
             - Path=/driver/**
-            - Cookie=logo,itheima
-            - Header=X-Request-Id,itheima
-            - My=Auth,xxx
-          filters:
-            - AddRequestHeader=X-Request-Foo, Bar
-            - My=token,hahaha
+#            - Cookie=logo,itheima
+#            - Header=X-Request-Id,itheima
+#            - My=Auth,xxx
+#          filters:
+#            - AddRequestHeader=X-Request-Foo,Bar
+#            - My=token,hahaha
         - id: hailtaxi-order
           uri: lb://hailtaxi-order
           predicates:

@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@MapperScan(basePackages = "com.yia.driver.mapper")
+@MapperScan(basePackages = "com.yida.driver.mapper")
 public class DriverApplication {
 	
 	public static void main(String[] args) {

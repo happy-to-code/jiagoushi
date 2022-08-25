@@ -5,22 +5,22 @@ spring:
     name: hailtaxi-driver
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://112.124.52.75:3306/hailtaxi-driver?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://112.124.52.75:3306/hailtaxi-driver?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&useSSL=false
     username: root
     password: root
   cloud:
     #Consul配置
     consul:
-      host: 112.124.52.75
+      host: 127.0.0.1
       port: 8500
       discovery:
         #注册到Consul中的服务名字
         service-name: ${spring.application.name}
         #注册的服务的实例 Id，最好不要重复，这里参考官网建议的方式 带随机数
-        #instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.i nstance_id:${random.value}}}
+        #instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
         # 自定义实例id为:应用名:ip:port
         instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-        prefer-ip-address: true
+        prefer-ip-address: true # 在注册时使用 consul IP, 而不是 hostname
         # 开启服务注册
         register: true
         # 开启服务发现
@@ -29,6 +29,7 @@ spring:
         health-check-critical-timeout: 2m
         #consul 健康检查的轮询周期
         health-check-interval: 10s
+        health-check-url: http://${spring.cloud.client.ip-address}:${server.port}/actuator/health
 
 management:
   endpoint:

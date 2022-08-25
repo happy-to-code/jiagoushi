@@ -5,10 +5,7 @@ import com.yida.driver.service.DriverService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -24,8 +21,7 @@ public class DriverController {
 	/****
 	 * 司机信息
 	 */
-	//@GetMapping(value = "/info/{id}")
-	@RequestMapping(value = "/info/{id}")
+	@GetMapping(value = "/info/{id}")
 	public Driver info(@PathVariable(value = "id") String id, HttpServletRequest request) {
 		Enumeration<String> headerNames = request.getHeaderNames();
 		while (headerNames.hasMoreElements()) {

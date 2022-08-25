@@ -23,6 +23,8 @@ public class MyGatewayFilterFactory extends AbstractNameValueGatewayFilterFactor
 					return exchange.getResponse().setComplete();
 				}
 				String token = tokens.get(0);
+				System.out.println("MyGatewayFilterFactory token = " + token);
+				System.out.println("MyGatewayFilterFactory config.getValue() = " + config.getValue());
 				// parse token 具体业务具体对待
 				if (!token.equals(config.getValue())) {
 					exchange.getResponse().setStatusCode(HttpStatus.BAD_REQUEST);
