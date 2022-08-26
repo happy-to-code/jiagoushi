@@ -14,6 +14,6 @@ dubbo:
     address: zookeeper://112.124.52.75:2181
     file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
   metadata-report:
-    timeout: 30000
+    timeout: 90000
   config-center:
-    timeout: 30000
+    timeout: 90000
