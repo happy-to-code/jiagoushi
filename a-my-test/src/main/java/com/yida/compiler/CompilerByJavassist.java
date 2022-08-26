@@ -1,16 +1,11 @@
 package com.yida.compiler;
 
+import javassist.*;
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Modifier;
-
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtConstructor;
-import javassist.CtField;
-import javassist.CtMethod;
-import javassist.CtNewMethod;
 
 /**
  * Javassist是一个开源的分析、编辑和创建Java字节码的类库

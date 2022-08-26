@@ -1,11 +1,5 @@
 package com.yida.aop.proxy_d2.warp;
 
-import org.omg.CORBA.SystemException;
-import org.omg.CORBA.portable.InputStream;
-import org.omg.CORBA.portable.InvokeHandler;
-import org.omg.CORBA.portable.OutputStream;
-import org.omg.CORBA.portable.ResponseHandler;
-
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.util.Arrays;
