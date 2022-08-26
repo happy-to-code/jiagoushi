@@ -1,4 +1,4 @@
-package com.yida.contriller;
+package com.yida.controller;
 
 import com.yida.pojo.Student;
 import com.yida.service.StudentService;
