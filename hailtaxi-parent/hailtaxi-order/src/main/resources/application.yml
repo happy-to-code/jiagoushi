@@ -11,7 +11,7 @@ spring:
   cloud:
     #Consul配置
     consul:
-      host: 112.124.52.75
+      host: 127.0.0.1
       port: 8500
       discovery:
         #注册到Consul中的服务名字

@@ -33,12 +33,12 @@ spring:
           uri: lb://hailtaxi-driver
           predicates:
             - Path=/driver/**
-#            - Cookie=logo,itheima
-#            - Header=X-Request-Id,itheima
-#            - My=Auth,xxx
-#          filters:
-#            - AddRequestHeader=X-Request-Foo,Bar
-#            - My=token,hahaha
+            - Cookie=logo,itheima
+            - Header=X-Request-Id,itheima
+            - My=Auth,xxx
+          filters:
+            - AddRequestHeader=X-Request-Foo,Bar
+            - My=token,hahaha
         - id: hailtaxi-order
           uri: lb://hailtaxi-order
           predicates:

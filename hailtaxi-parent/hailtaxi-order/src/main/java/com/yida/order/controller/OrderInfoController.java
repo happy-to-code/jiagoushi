@@ -29,7 +29,6 @@ public class OrderInfoController {
 	 */
 	@PostMapping
 	public OrderInfo add() {
-		
 		//修改司机信息  司机ID=1
 		Driver driver = driverFeign.status("1", 2);
 		//创建订单
