@@ -1,6 +1,6 @@
-package com.yida.aop.before.impl;
+package com.yida.aop.common.impl;
 
-import com.yida.aop.before.ICalculatorAop;
+import com.yida.aop.common.ICalculatorAop;
 import org.springframework.stereotype.Service;
 
 /**

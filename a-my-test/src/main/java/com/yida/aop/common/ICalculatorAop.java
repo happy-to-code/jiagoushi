@@ -1,4 +1,4 @@
-package com.yida.aop.before;
+package com.yida.aop.common;
 
 /**
  * @author ：zhangyifei

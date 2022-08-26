@@ -18,13 +18,19 @@ import java.util.List;
 @Component
 @Aspect
 public class LoggingAspectBefore {
-
-	@Before(value = "execution(* com.yida.aop.before.impl.*.*(..))")
+	
+	/**
+	 * com.yida.aop.common.impl.CalculatorAop.*(..)
+	 * 包括CalculatorAop下所有的方法
+	 *
+	 * @param joinPoint
+	 */
+	@Before(value = "execution(* com.yida.aop.common.impl.CalculatorAop.*(..))")
 	public void beforeMethod(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName();
-
+		
 		List<Object> params = Arrays.asList(joinPoint.getArgs());
-
+		
 		System.out.println("执行在:" + methodName + "的方法,参数params = " + params);
 	}
 }
