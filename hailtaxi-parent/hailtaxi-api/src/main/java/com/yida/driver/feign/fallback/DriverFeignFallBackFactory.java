@@ -6,6 +6,7 @@ import com.yida.driver.model.Driver;
 import feign.hystrix.FallbackFactory;
 import org.springframework.stereotype.Component;
 
+
 @Component
 public class DriverFeignFallBackFactory implements FallbackFactory<DriverFeign> {
 	@Override
