@@ -20,7 +20,14 @@ class ICalculatorAopTest {
 	
 	@Test
 	void add() {
-		int add = iCalculatorAop.add(1, 3);
-		System.out.println("add = " + add);
+		// iCalculatorAop.add(1, 3);
+		int divide = iCalculatorAop.divide(15, 5);
+		System.out.println("divide = " + divide);
+		// int sub = iCalculatorAop.subtract(5, 3);
+		// System.out.println("sub = " + sub);
+		// int multiply = iCalculatorAop.multiply(2, 8);
+		// System.out.println("multiply = " + multiply);
+		// int divide = iCalculatorAop.divide(10, 5);
+		// System.out.println("divide = " + divide);
 	}
 }
