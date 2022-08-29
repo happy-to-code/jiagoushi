@@ -18,7 +18,7 @@ public class OrderController {
 	/**
 	 * 订单服务接口
 	 */
-	@DubboReference(version = "${dubbo.spring.provider.version}",timeout = 1000,retries = 3,loadbalance = "roundrobin")
+	@DubboReference(version = "${dubbo.spring.provider.version}", timeout = 1000, retries = 3, loadbalance = "roundrobin")
 	private OrderService orderService;
 	
 	/**
