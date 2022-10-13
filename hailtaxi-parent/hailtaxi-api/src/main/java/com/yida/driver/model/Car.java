@@ -15,15 +15,15 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Car implements Serializable {
-	//车辆ID
+	//  车辆ID
 	private String id;
-	//车牌
+	//  车牌
 	private String plateNumber;
-	//车品牌
+	//  车品牌
 	private String brand;
-	//车的颜色
+	//  车的颜色
 	private String color;
-	//状态： 0 空闲，1 繁忙
+	//  状态： 0 空闲，1 繁忙
 	private Integer status;
 	//车型
 	private Integer carModel;
