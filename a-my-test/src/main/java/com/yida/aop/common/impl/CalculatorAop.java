@@ -3,6 +3,8 @@ package com.yida.aop.common.impl;
 import com.yida.aop.common.ICalculatorAop;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 /**
  * @author ：zhangyifei
  * @date ：Created in 2022/8/26 11:20
